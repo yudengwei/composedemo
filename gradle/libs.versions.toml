@@ -1,0 +1,88 @@
+[versions]
+android-plugin = "8.4.2"
+kotlin-plugin = "1.9.22"
+ksp-plugin = "1.9.22-1.0.17"
+androidx-activity-compose = "1.9.0"
+androidx-core-ktx = "1.13.1"
+androidx-lifecycle = "2.8.2"
+junit-junit = "4.13.2"
+androidx-junit = "1.1.5"
+androidx-espresso = "3.5.1"
+androidx-compose-bom = "2024.06.00"
+androidx-compose-compiler = "1.5.10"
+androidx-hilt = "2.51.1"
+androidx-core-splashscreen = "1.0.1"
+androidx-datastore = "1.1.1"
+androidx-startup = "1.1.1"
+androidx-appcompat = "1.7.0"
+androidx-navigation = "2.7.7"
+androidxHiltNavigationCompose = "1.2.0"
+
+coil = "2.5.0"
+
+glide = "5.0.0-rc01"
+glide-compose = "1.0.0-beta01"
+
+zoom-image = "1.0.2"
+
+zoomable-image = "0.8.0"
+
+[plugins]
+android-application = {id = "com.android.application", version.ref = "android-plugin"}
+android-library = {id = "com.android.library", version.ref = "android-plugin"}
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-plugin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin-plugin" }
+google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-plugin" }
+androidx-hilt = { id = "com.google.dagger.hilt.android", version.ref = "androidx-hilt"}
+
+abiao-android-application = {id = "abiao.android.application", version = "unspecified"}
+abiao-android-compose = {id = "abiao.android.compose", version = "unspecified"}
+abiao-android-library = {id = "abiao.android.library", version = "unspecified"}
+
+[libraries]
+android-gradle = {group = "com.android.tools.build", name = "gradle", version.ref = "android-plugin"}
+kotlin-gradle = {group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin-plugin"}
+
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-activity-compose = {group = "androidx.activity", name="activity-compose", version.ref = "androidx-activity-compose"}
+androidx-core-ktx = {group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx"}
+androidx-lifecycle-runtime-ktx = {group = "androidx.lifecycle", name="lifecycle-runtime-ktx", version.ref = "androidx-lifecycle"}
+androidx-lifecycle-viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+androidx-core-splashscreen = {group = "androidx.core", name = "core-splashscreen", version.ref = "androidx-core-splashscreen"}
+androidx-datastore-core = {group = "androidx.datastore", name = "datastore-core", version.ref = "androidx-datastore"}
+androidx-datastore-preferences = {group = "androidx.datastore", name = "datastore-preferences", version.ref = "androidx-datastore"}
+androidx-startup-runtime = {group = "androidx.startup", name = "startup-runtime", version = "androidx-startup"}
+
+androidx-hilt = {group = "com.google.dagger", name = "hilt-android", version.ref = "androidx-hilt"}
+androidx-hilt-compiler = {group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "androidx-hilt"}
+
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
+androidx-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso" }
+junit-junit = { module = "junit:junit", version.ref = "junit-junit" }
+
+androidx-compose-bom = {group = "androidx.compose", name="compose-bom", version.ref = "androidx-compose-bom"}
+androidx-compose-ui = {group = "androidx.compose.ui", name="ui"}
+androidx-compose-foundation = {group = "androidx.compose.foundation", name="foundation"}
+androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
+androidx-compose-materialWindow = { module = "androidx.compose.material3:material3-window-size-class" }
+androidx-compose-material = { module = "androidx.compose.material:material" }
+androidx-compose-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-compose-preview-android = { module = "androidx.compose.ui:ui-tooling-preview-android" }
+androidx-compose-tooling = { module = "androidx.compose.ui:ui-tooling" }
+
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+coil-gif = { module = "io.coil-kt:coil-gif", version.ref = "coil" }
+coil-video = { module = "io.coil-kt:coil-video", version.ref = "coil" }
+
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-ksp = { module = "com.github.bumptech.glide:ksp", version.ref = "glide" }
+glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glide-compose" }
+
+zoom-image-coil = { module = "io.github.panpf.zoomimage:zoomimage-compose-coil", version.ref = "zoom-image" }
+zoom-image-glide = { module = "io.github.panpf.zoomimage:zoomimage-compose-glide", version.ref = "zoom-image" }
+
+zoomable-image-coil = { module = "me.saket.telephoto:zoomable-image-coil", version.ref = "zoomable-image" }
+zoomable-image-glide = { module = "me.saket.telephoto:zoomable-image-glide", version.ref = "zoomable-image" }
