@@ -15,7 +15,9 @@ dependencies {
     ksp(libs.androidx.hilt.compiler)
     //implementation(project(":lib_crane"))
     //implementation(project(":lib_demo"))
-    implementation(project(":lib_animator"))
+    //implementation(project(":lib_animator"))
+    //implementation(project(":lib_canvas"))
+    implementation(project(":lib_touch"))
 
     testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.junit)

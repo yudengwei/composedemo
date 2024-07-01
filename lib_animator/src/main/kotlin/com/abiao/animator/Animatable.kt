@@ -2,6 +2,7 @@ package com.abiao.animator
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.VectorConverter
+import androidx.compose.animation.core.exponentialDecay
 import androidx.compose.animation.rememberSplineBasedDecay
 import androidx.compose.animation.splineBasedDecay
 import androidx.compose.foundation.background
@@ -36,7 +37,14 @@ import kotlinx.coroutines.launch
 
  * snapTo(targetValue) -> 动画瞬间完成
 
- * animateDecay 衰减动画，结束时会有惯性，过一会才停止
+ * animateDecay(initialVelocity,animationSpec)  衰减动画，结束时会有惯性，过一会才停止
+            initialVelocity: 初始速度
+            animationSpec:
+                rememberSplineBasedDecay： 依赖屏幕像素密度，像素密度越大，衰减越快，动画时长越短，惯性滑动的距离越短
+
+                exponentialDecay: 不依赖屏幕像素密度
+                    frictionMultiplier：摩擦系数，摩擦系数越大，速度减速越快，动画时长越短，惯性滑动距离越短
+                    absVelocityThreshold：绝对速度阈值，当速度绝对值低于此值时动画停止，这里的数值是指多少单位的速度，比如动画数值类型为 Dp，这里传 100f 即 100f * 1.dp
  */
 
 @Composable
@@ -86,7 +94,7 @@ fun DecayBox(
                 .background(color = Color.Red)
                 .clickable {
                     scope.launch {
-                        animatablePadding.animateDecay(2000.dp, splineDecay1)
+                        animatablePadding.animateDecay(1000.dp, exponentialDecay())
                     }
                 }
         )
