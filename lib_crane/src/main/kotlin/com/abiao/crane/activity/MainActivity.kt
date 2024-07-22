@@ -69,6 +69,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.abiao.crane.R
+import com.abiao.crane.compose.Calendar
+import com.abiao.crane.compose.CalendarScreen
 import com.abiao.crane.compose.CraneHome
 import com.abiao.crane.viewmodel.MainViewModel
 import com.abiao.crane.ui.CraneTheme
@@ -95,12 +97,23 @@ class MainActivity : ComponentActivity() {
                             mainViewModel = viewModel,
                             widthSize = widthSize,
                             onDateSelectionClicked = {
-
+                                navController.navigate(Routes.Calendar.route)
                             }
                         )
                     }
                     composable(route = Routes.Calendar.route) {
-
+                        val parentEntry = remember(it) {
+                            navController.getBackStackEntry(Routes.Home.route)
+                        }
+                        val parentViewModel = hiltViewModel<MainViewModel>(
+                            parentEntry
+                        )
+                        CalendarScreen(
+                            mainViewModel = parentViewModel,
+                            onBackPressed = {
+                                navController.popBackStack()
+                            }
+                        )
                     }
                 }
             }

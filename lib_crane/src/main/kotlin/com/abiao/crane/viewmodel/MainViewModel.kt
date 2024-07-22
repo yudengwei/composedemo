@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abiao.crane.compose.MAX_PEOPLE
+import com.abiao.crane.data.CalendarState
 import com.abiao.crane.data.DestinationsRepository
 import com.abiao.crane.data.ExploreModel
 import com.abiao.crane.di.IODispatcher
@@ -24,6 +25,8 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     val shownSplash = mutableStateOf(SplashState.Shown)
+
+    val calendarState = CalendarState()
 
     private val _suggestedDestinations = MutableLiveData<List<ExploreModel>>()
     val suggestedDestinations: LiveData<List<ExploreModel>>
