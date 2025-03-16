@@ -36,6 +36,4 @@ dependencies {
 
     implementation(libs.zoomable.image.glide)
     implementation(libs.zoomable.image.coil)
-
-    implementation(project(":lib_common"))
 }

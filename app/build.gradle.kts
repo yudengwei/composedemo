@@ -13,7 +13,7 @@ android {
 dependencies {
     implementation(libs.androidx.hilt)
     ksp(libs.androidx.hilt.compiler)
-    implementation(project(":lib_draw"))
+    implementation(project(":lib_imagepick"))
 
     testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.junit)

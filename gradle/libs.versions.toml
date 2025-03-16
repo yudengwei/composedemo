@@ -1,5 +1,5 @@
 [versions]
-android-plugin = "8.4.2"
+android-plugin = "8.7.2"
 kotlin-plugin = "1.9.22"
 ksp-plugin = "1.9.22-1.0.17"
 androidx-activity-compose = "1.9.0"
