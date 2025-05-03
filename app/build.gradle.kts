@@ -13,7 +13,7 @@ android {
 dependencies {
     implementation(libs.androidx.hilt)
     ksp(libs.androidx.hilt.compiler)
-    implementation(project(":lib_imagepick"))
+    implementation(project(":lib_nowinandroid"))
 
     testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.junit)

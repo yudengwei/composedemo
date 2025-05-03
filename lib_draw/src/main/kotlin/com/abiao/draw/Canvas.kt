@@ -135,7 +135,6 @@ fun DrawBefore(
 
                 }
         ) {
-            Image(painter = painterResource(id = R.drawable.ab1_inversions), contentDescription = null)
         }
     }
 }
@@ -162,7 +161,6 @@ fun DrawAfter(
                     )
                 }
         ) {
-            Image(painter = painterResource(id = R.drawable.ab1_inversions), contentDescription = null)
         }
     }
 }
@@ -262,50 +260,6 @@ private fun buildWavePath(
 
 @Composable
 fun WaveDemo() {
-    var _progress by remember { mutableStateOf(0.5f) }
-    var _velocity by remember { mutableStateOf(1.0f) }
-    var _amplitude by remember { mutableStateOf(0.2f) }
-
-    val size = LocalDensity.current.run {
-        200.dp.toPx().roundToInt()
-    }
-    val bitmap = ImageBitmap.imageResource(id = R.drawable.logo_nba).asAndroidBitmap().scale(size, size)
-    Column {
-        Box(
-            modifier = Modifier
-                .weight(1f)
-                .align(alignment = Alignment.CenterHorizontally)
-        ) {
-            WaveLoading(
-                Modifier
-                    .size(200.dp)
-                    .clipToBounds()
-                    .align(Alignment.Center),
-                WaveConfig(_progress, _amplitude, _velocity),
-                bitmap = bitmap
-            )
-        }
-        LabelSlider(
-            label = "Progress",
-            value = _progress,
-            onValueChange = { _progress = it },
-            range = 0f..1f
-        )
-
-        LabelSlider(
-            label = "Velocity",
-            value = _velocity,
-            onValueChange = { _velocity = it },
-            range = 0f..1f
-        )
-
-        LabelSlider(
-            label = "Amplitude",
-            value = _amplitude,
-            onValueChange = { _amplitude = it },
-            range = 0f..1f
-        )
-    }
 }
 
 @Composable

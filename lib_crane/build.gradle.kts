@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.abiao.android.compose)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.androidx.hilt)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -14,7 +15,6 @@ android {
 
 dependencies {
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.activity.compose)
 
     implementation(libs.androidx.lifecycle.viewModelCompose)
 
@@ -22,13 +22,6 @@ dependencies {
 
     implementation(libs.androidx.hilt)
     ksp(libs.androidx.hilt.compiler)
-
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.compose.material)
-    implementation(libs.androidx.compose.materialWindow)
-    implementation(libs.androidx.compose.livedata)
 
     implementation(libs.coil.compose)
 

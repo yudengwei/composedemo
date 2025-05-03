@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.abiao.android.compose)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.androidx.hilt)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -13,18 +14,11 @@ android {
 
 dependencies {
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.activity.compose)
 
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.compose.preview)
-    implementation(libs.androidx.compose.preview.android)
-    implementation(libs.androidx.compose.materialWindow)
-    debugImplementation(libs.androidx.compose.tooling)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    implementation(libs.androidx.compose.material3.adapter.suite)
 
     testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.junit)

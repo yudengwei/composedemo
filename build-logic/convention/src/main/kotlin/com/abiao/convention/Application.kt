@@ -1,5 +1,6 @@
 package com.abiao.convention
 
+import com.abiao.Constant
 import com.android.build.gradle.internal.api.ApkVariantOutputImpl
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.JavaVersion
@@ -14,14 +15,13 @@ import java.util.TimeZone
 
 internal fun Project.configureAndroidApplication(commonExtension: BaseAppModuleExtension) {
     commonExtension.apply {
-        compileSdk = 34
-        buildToolsVersion = "34.0.0"
+        compileSdk = Constant.COMPILER_VERSION
         defaultConfig {
             applicationId = "com.abiao.composedemo"
-            minSdk = 26
-            targetSdk = 34
-            versionCode = 1
-            versionName = "1.0.0"
+            minSdk = Constant.MIN_SDK
+            targetSdk = Constant.TARGET_VERSION
+            versionCode = Constant.VERSION_CODE
+            versionName = Constant.VERSION_NAME
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
             applicationVariants.all {
                 val variant = this
@@ -40,12 +40,12 @@ internal fun Project.configureAndroidApplication(commonExtension: BaseAppModuleE
             checkDependencies = true
         }
         compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
+            sourceCompatibility = Constant.JAVA_VERSION
+            targetCompatibility = Constant.JAVA_VERSION
         }
         tasks.withType<KotlinCompile>().configureEach {
             kotlinOptions {
-                jvmTarget = JavaVersion.VERSION_1_8.toString()
+                jvmTarget = Constant.JAVA_VERSION.toString()
             }
         }
         signingConfigs {
