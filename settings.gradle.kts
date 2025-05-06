@@ -26,3 +26,7 @@ include(":lib_canvas")
 include(":lib_touch")
 include(":lib_draw")
 include(":lib_nowinandroid")
+include(":lib_layout")
+include(":lib_modifier")
+include(":lib_widget")
+
