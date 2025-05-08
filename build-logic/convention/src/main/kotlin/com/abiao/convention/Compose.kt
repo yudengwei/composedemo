@@ -26,7 +26,7 @@ internal fun Project.configureCompose(commonExtension: CommonExtension<*, *, *, 
             "implementation"(libs.findLibrary("androidx-compose-ui").get())
             "implementation"(libs.findLibrary("androidx-compose-foundation").get())
             "implementation"(libs.findLibrary("androidx-compose-material3").get())
-            "implementation"(libs.findLibrary("androidx-compose-material").get())
+            //"implementation"(libs.findLibrary("androidx-compose-material").get())
             "implementation"(libs.findLibrary("androidx-compose-materialWindow").get())
             "implementation"(libs.findLibrary("androidx-activity-compose").get())
             "debugImplementation"(libs.findLibrary("androidx-compose-tooling").get())
