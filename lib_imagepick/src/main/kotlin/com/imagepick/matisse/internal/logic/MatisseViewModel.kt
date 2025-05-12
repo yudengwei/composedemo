@@ -13,5 +13,5 @@ class MatisseViewModel(application: Application, private val matisse: Matisse) :
 
     private val defaultBucketId = "&__matisseDefaultBucketId__&"
 
-
+    val captureStrategy = matisse.captureStrategy
 }

@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="matisse_main_page_background_color">#FFFFFFFF</color>
+    <color name="matisse_top_bar_background_color">#FFFFFFFF</color>
+    <color name="matisse_top_bar_icon_color">#FF000000</color>
+    <color name="matisse_status_bar_color">#FFFFFFFF</color>
+    <color name="matisse_top_bar_text_color">#FF000000</color>
+    <color name="matisse_dropdown_menu_background_color">#FFFFFFFF</color>
+
+    <bool name="matisse_status_bar_dark_icons">true</bool>
+    <bool name="matisse_navigation_bar_dark_icons">true</bool>
 </resources>

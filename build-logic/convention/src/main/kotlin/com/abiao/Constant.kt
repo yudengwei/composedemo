@@ -6,7 +6,7 @@ object Constant {
 
     const val COMPILER_VERSION = 35
 
-    const val MIN_SDK = 21
+    const val MIN_SDK = 23
 
     const val TARGET_VERSION = 35
 

@@ -8,7 +8,8 @@ import kotlinx.parcelize.Parcelize
 @Stable
 @Parcelize
 data class Matisse(
-    val maxSelectable: Int = 9
+    val maxSelectable: Int = 9,
+    val captureStrategy: CaptureStrategy? = null
 ): Parcelable
 
 @Stable

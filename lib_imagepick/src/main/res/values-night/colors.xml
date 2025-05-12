@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="matisse_main_page_background_color">#FF22202A</color>
+    <color name="matisse_top_bar_background_color">#FF2B2A34</color>
+    <color name="matisse_top_bar_icon_color">#FFFFFFFF</color>
+    <color name="matisse_status_bar_color">#FF2B2A34</color>
+
+    <color name="matisse_dropdown_menu_background_color">#FF2B2A34</color>
+</resources>

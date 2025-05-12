@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="matisse_top_bar_background_color">#FF03A9F4</color>
+    <color name="matisse_top_bar_icon_color">#FFFFFFFF</color>
+    <color name="matisse_status_bar_color">#FF03A9F4</color>
+    <color name="matisse_top_bar_text_color">#FFFFFFFF</color>
+
+    <bool name="matisse_status_bar_dark_icons">false</bool>
+    <bool name="matisse_navigation_bar_dark_icons">true</bool>
+
+</resources>

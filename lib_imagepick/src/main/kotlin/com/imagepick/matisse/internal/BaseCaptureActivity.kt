@@ -1,4 +1,4 @@
-package com.imagepick.matisse.internal.activity
+package com.imagepick.matisse.internal
 
 import android.Manifest
 import android.content.Context
@@ -8,7 +8,6 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
 import androidx.core.app.ActivityCompat

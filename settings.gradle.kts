@@ -29,4 +29,5 @@ include(":lib_nowinandroid")
 include(":lib_layout")
 include(":lib_modifier")
 include(":lib_widget")
+include(":lib_test")
 

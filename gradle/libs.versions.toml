@@ -1,14 +1,14 @@
 [versions]
-android-plugin = "8.9.0"
-kotlin-plugin = "2.1.10"
-ksp-plugin = "2.1.10-1.0.30"
+android-plugin = "8.10.0"
+kotlin-plugin = "2.1.20"
+ksp-plugin = "2.1.20-2.0.0"
 androidx-activity-compose = "1.10.1"
 androidx-core-ktx = "1.15.0"
 androidx-lifecycle = "2.8.7"
 junit-junit = "4.13.2"
 androidx-junit = "1.2.1"
 androidx-espresso = "3.6.1"
-androidx-compose-bom = "2025.03.00"
+androidx-compose-bom = "2025.05.00"
 androidx-compose-compiler = "1.5.10"
 androidx-hilt = "2.55"
 androidx-core-splashscreen = "1.0.1"
@@ -20,6 +20,7 @@ androidxHiltNavigationCompose = "1.2.0"
 androidx-compose-adaptive = "1.1.0"
 
 coil = "2.7.0"
+coil3 = "3.1.0"
 
 glide = "5.0.0-rc01"
 glide-compose = "1.0.0-beta01"
@@ -91,6 +92,10 @@ coil-video = { module = "io.coil-kt:coil-video", version.ref = "coil" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-ksp = { module = "com.github.bumptech.glide:ksp", version.ref = "glide" }
 glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glide-compose" }
+
+coil3-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
+coil3-gif = { module = "io.coil-kt.coil3:coil-gif", version.ref = "coil3" }
+coil3-video = { module = "io.coil-kt.coil3:coil-video", version.ref = "coil3" }
 
 zoom-image-coil = { module = "io.github.panpf.zoomimage:zoomimage-compose-coil", version.ref = "zoom-image" }
 zoom-image-glide = { module = "io.github.panpf.zoomimage:zoomimage-compose-glide", version.ref = "zoom-image" }

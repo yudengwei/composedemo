@@ -1,0 +1,31 @@
+package com.abiao.lib_test
+
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import com.imagepick.matisse.Matisse
+import com.imagepick.matisse.MediaResource
+import com.imagepick.matisse.MediaStoreCaptureStrategy
+
+class MainViewModel: ViewModel() {
+
+    var pageViewState by mutableStateOf(
+        MainPageViewState(
+            mediaList = emptyList()
+        )
+    )
+
+    fun mediaPickerResult(result: List<MediaResource>?) {
+        if (!result.isNullOrEmpty()) {
+            pageViewState = pageViewState.copy(mediaList = result)
+        }
+    }
+
+    fun buildMatisse(): Matisse {
+        return Matisse(
+            maxSelectable = 3,
+            captureStrategy = MediaStoreCaptureStrategy()
+        )
+    }
+}

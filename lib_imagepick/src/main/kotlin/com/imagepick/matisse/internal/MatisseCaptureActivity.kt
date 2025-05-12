@@ -1,4 +1,4 @@
-package com.imagepick.matisse.internal.activity
+package com.imagepick.matisse.internal
 
 import android.content.Intent
 import android.os.Bundle

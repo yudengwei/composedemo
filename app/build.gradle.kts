@@ -13,7 +13,7 @@ android {
 dependencies {
     implementation(libs.androidx.hilt)
     ksp(libs.androidx.hilt.compiler)
-    implementation(project(":lib_widget"))
+    implementation(project(":lib_test"))
 
     testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.junit)

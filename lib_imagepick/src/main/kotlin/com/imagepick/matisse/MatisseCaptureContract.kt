@@ -1,13 +1,10 @@
-package com.imagepick.matisse.contract
+package com.imagepick.matisse
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
-import com.imagepick.matisse.Matisse
-import com.imagepick.matisse.MatisseCapture
-import com.imagepick.matisse.MediaResource
-import com.imagepick.matisse.internal.activity.MatisseCaptureActivity
+import com.imagepick.matisse.internal.MatisseCaptureActivity
 
 class MatisseCaptureContract: ActivityResultContract<MatisseCapture, MediaResource?>() {
 
