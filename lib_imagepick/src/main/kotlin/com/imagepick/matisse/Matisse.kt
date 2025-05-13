@@ -12,17 +12,26 @@ data class Matisse(
     val captureStrategy: CaptureStrategy? = null
 ): Parcelable
 
+internal const val ImageMimeTypePrefix = "image/"
+
+internal const val VideoMimeTypePrefix = "video/"
+
 @Stable
 @Parcelize
 data class MediaResource(
-    internal val id: Long,
-    internal val bucketId: String,
-    internal val bucketName: String,
     val uri: Uri,
     val path: String,
     val name: String,
-    val mimeType: String,
-): Parcelable
+    val mimeType: String
+) : Parcelable {
+
+    val isImage: Boolean
+        get() = mimeType.startsWith(prefix = ImageMimeTypePrefix)
+
+    val isVideo: Boolean
+        get() = mimeType.startsWith(prefix = VideoMimeTypePrefix)
+
+}
 
 @Parcelize
 data class MatisseCapture(val captureStrategy: CaptureStrategy): Parcelable
