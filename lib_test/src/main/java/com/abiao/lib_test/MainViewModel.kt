@@ -4,6 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.imagepick.matisse.CoilImageEngine
 import com.imagepick.matisse.Matisse
 import com.imagepick.matisse.MediaResource
 import com.imagepick.matisse.MediaStoreCaptureStrategy
@@ -25,7 +26,8 @@ class MainViewModel: ViewModel() {
     fun buildMatisse(): Matisse {
         return Matisse(
             maxSelectable = 3,
-            captureStrategy = MediaStoreCaptureStrategy()
+            captureStrategy = MediaStoreCaptureStrategy(),
+            imageEngine = CoilImageEngine()
         )
     }
 }

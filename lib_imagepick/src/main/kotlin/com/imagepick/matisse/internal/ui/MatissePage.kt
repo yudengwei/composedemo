@@ -8,15 +8,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import com.imagepick.R
+import com.imagepick.matisse.internal.logic.MatissePageViewState
 
 @Composable
-internal fun MatissePage() {
+internal fun MatissePage(
+    pageViewState: MatissePageViewState,
+) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         containerColor = colorResource(R.color.matisse_main_page_background_color),
         topBar = {
             MatisseTopBar(
-                title = "所有"
+                modifier = Modifier,
+                title = "所有",
+                mediaBucketsInfo = pageViewState.mediaBucketsInfo,
+                onClickBucket = pageViewState.onClickBucket,
+                imageEngine = pageViewState.imageEngine
             )
         }
     ) {innerPadding ->

@@ -9,6 +9,9 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Matisse(
     val maxSelectable: Int = 9,
+    val fastSelect: Boolean = false,
+    val gridColumns: Int = 4,
+    val imageEngine: ImageEngine,
     val captureStrategy: CaptureStrategy? = null
 ): Parcelable
 

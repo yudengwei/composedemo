@@ -2,6 +2,8 @@ package com.imagepick.matisse.internal.ui
 
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -14,12 +16,14 @@ import androidx.compose.foundation.layout.statusBarsIgnoringVisibility
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,6 +34,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ModifierInfo
 import androidx.compose.ui.res.colorResource
@@ -43,11 +48,15 @@ import androidx.compose.ui.unit.sp
 import com.imagepick.R
 import com.imagepick.matisse.ImageEngine
 import com.imagepick.matisse.internal.logic.MatisseMediaBucketInfo
+import kotlinx.coroutines.launch
 
 @Composable
 internal fun MatisseTopBar(
     modifier: Modifier = Modifier,
-    title: String
+    title: String,
+    mediaBucketsInfo: List<MatisseMediaBucketInfo>,
+    onClickBucket: suspend (String) -> Unit,
+    imageEngine: ImageEngine
 ) {
     Row(
         modifier = modifier
@@ -104,6 +113,21 @@ internal fun MatisseTopBar(
                 contentDescription = null
             )
         }
+        BucketDropdownMenu(
+            modifier = Modifier,
+            expand = menuExpanded,
+            mediaBuckets = mediaBucketsInfo,
+            imageEngine = imageEngine,
+            onClickBucket = {
+                menuExpanded = false
+                coroutineScope.launch {
+                    onClickBucket(it.bucketId)
+                }
+            },
+            onDismissRequest = {
+                menuExpanded = false
+            }
+        )
     }
 }
 
@@ -125,6 +149,48 @@ private fun BucketDropdownMenu(
         offset = DpOffset(x = 10.dp, y = (-10).dp),
         onDismissRequest = onDismissRequest
     ) {
-
+        for (bucketInfo in mediaBuckets) {
+            DropdownMenuItem(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                contentPadding = PaddingValues(horizontal = 6.dp, vertical = 3.dp),
+                text = {
+                    Row(
+                        modifier = Modifier,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .size(52.dp)
+                                .clip(RoundedCornerShape(2.dp))
+                                .background(color = colorResource(R.color.matisse_media_item_background_color)),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            val firstMedia = bucketInfo.firstMedia
+                            if (firstMedia != null) {
+                                imageEngine.Thumbnail(firstMedia)
+                            }
+                        }
+                        Text(
+                            modifier = Modifier.weight(1f, fill = false).padding(start = 10.dp),
+                            text = bucketInfo.bucketName,
+                            fontSize = 15.sp,
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis,
+                            color = colorResource(R.color.matisse_dropdown_menu_text_color)
+                        )
+                        Text(
+                            modifier = Modifier.padding(start = 6.dp, end = 6.dp),
+                            text = "(${bucketInfo.size})",
+                            fontSize = 15.sp,
+                            color = colorResource(R.color.matisse_dropdown_menu_text_color)
+                        )
+                    }
+                },
+                onClick = {
+                    onClickBucket(bucketInfo)
+                }
+            )
+        }
     }
 }

@@ -52,7 +52,9 @@ class MatisseActivity: BaseCaptureActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MatisseTheme {
-                MatissePage()
+                MatissePage(
+                    pageViewState = matisseViewModel.pageViewState
+                )
             }
         }
     }

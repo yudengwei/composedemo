@@ -78,12 +78,23 @@ data class MediaStoreCaptureStrategy(private val extra: Bundle = Bundle.EMPTY): 
     }
 
     override suspend fun loadResource(context: Context, imageUri: Uri): MediaResource? {
-        val resource = MediaProvider.loadResources(context, imageUri)
-        if (resource != null) {
-            return resource
+        val task = suspend {
+            val resource = MediaProvider.loadResources(context, imageUri)
+            if (resource != null) {
+                MediaResource(
+                    uri = resource.uri,
+                    path = resource.path,
+                    name = resource.name,
+                    mimeType = resource.mimeType
+                )
+            } else {
+                null
+            }
         }
-        delay(250)
-        return MediaProvider.loadResources(context = context, uri = imageUri)
+        return task() ?: run {
+            delay(timeMillis = 200)
+            task()
+        }
     }
 
     override suspend fun onTakePictureCanceled(context: Context, imageUri: Uri) {
