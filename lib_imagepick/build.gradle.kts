@@ -19,4 +19,6 @@ dependencies {
 
     compileOnly(libs.coil3.compose)
     compileOnly(libs.glide.compose)
+
+    implementation(project(":lib_util"))
 }

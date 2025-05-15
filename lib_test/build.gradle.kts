@@ -19,6 +19,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso)
 
+    implementation(libs.coil3.compose)
+    implementation(libs.glide.compose)
+
     implementation(project(":lib_util"))
     implementation(project(":lib_common"))
     implementation(project(":lib_imagepick"))

@@ -1,8 +1,11 @@
 package com.imagepick.matisse.internal
 
+import android.Manifest
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.content.IntentCompat
 import androidx.core.view.WindowCompat
@@ -57,6 +60,7 @@ class MatisseActivity: BaseCaptureActivity() {
                 )
             }
         }
+        requestReadMediaPermission()
     }
 
     private fun setSystemBarUi(previewPageVisible: Boolean) {
@@ -80,6 +84,37 @@ class MatisseActivity: BaseCaptureActivity() {
             }
             isAppearanceLightStatusBars = statusBarDarkIcons
             isAppearanceLightNavigationBars = navigationBarDarkIcons
+        }
+    }
+
+    private val requestReadMediaPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {result ->
+            matisseViewModel.requestReadMediaPermissionResult(
+                granted = result.all {
+                    it.value
+                }
+            )
+        }
+
+    private fun requestReadMediaPermission() {
+        val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+            && applicationInfo.targetSdkVersion >= Build.VERSION_CODES.TIRAMISU) {
+            buildList {
+                val mediaType = matisseViewModel.mediaType
+                if (mediaType.includeImage) {
+                    add(Manifest.permission.READ_MEDIA_IMAGES)
+                }
+                if (mediaType.includeVideo) {
+                    add(Manifest.permission.READ_MEDIA_VIDEO)
+                }
+            }.toTypedArray()
+        } else {
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+        if (permissionGranted(this, permissions)) {
+            matisseViewModel.requestReadMediaPermissionResult(true)
+        } else {
+            requestReadMediaPermissionLauncher.launch(permissions)
         }
     }
 }

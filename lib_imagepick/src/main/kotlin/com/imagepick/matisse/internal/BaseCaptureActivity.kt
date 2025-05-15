@@ -140,7 +140,7 @@ abstract class BaseCaptureActivity: ComponentActivity() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun permissionGranted(context: Context, permissions: Array<String>): Boolean {
+    protected fun permissionGranted(context: Context, permissions: Array<String>): Boolean {
         return permissions.all { permissionGranted(context, it) }
     }
 

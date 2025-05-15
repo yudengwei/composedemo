@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import com.imagepick.matisse.MediaResource
+import com.imagepick.matisse.MediaType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -137,6 +138,58 @@ internal object MediaProvider {
                 e.printStackTrace()
             }
             return@withContext mediaResourceList
+        }
+    }
+
+    suspend fun loadResources(
+        context: Context,
+        mediaType: MediaType
+    ): List<MediaInfo>? {
+        return withContext(Dispatchers.Default) {
+            loadResources(
+                context,
+                selection = generateSqlSelection(mediaType = mediaType),
+                selectionArgs = null
+            )
+        }
+    }
+
+    private fun generateSqlSelection(mediaType: MediaType): String {
+        val mediaTypeColumn = MediaStore.Files.FileColumns.MEDIA_TYPE
+        val mediaTypeImageColumn = MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE
+        val mediaTypeVideoColumn = MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO
+        val mimeTypeColumn = MediaStore.Files.FileColumns.MIME_TYPE
+        val queryImageSelection =
+            "$mediaTypeColumn = $mediaTypeImageColumn and $mimeTypeColumn like 'image/%'"
+        val queryVideoSelection =
+            "$mediaTypeColumn = $mediaTypeVideoColumn and $mimeTypeColumn like 'video/%'"
+        return when (mediaType) {
+            is MediaType.ImageOnly -> {
+                queryImageSelection
+            }
+
+            MediaType.VideoOnly -> {
+                queryVideoSelection
+            }
+
+            is MediaType.ImageAndVideo -> {
+                buildString {
+                    append(queryImageSelection)
+                    append(" or ")
+                    append(queryVideoSelection)
+                }
+            }
+
+            is MediaType.MultipleMimeType -> {
+                mediaType.mimeTypes.joinToString(
+                    prefix = "$mediaTypeColumn in (",
+                    postfix = ")",
+                    separator = ",",
+                    transform = {
+                        "'${it}'"
+                    }
+                )
+            }
         }
     }
 }

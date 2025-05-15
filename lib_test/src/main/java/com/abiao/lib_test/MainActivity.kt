@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.abiao.test.R
 import com.imagepick.matisse.MatisseContract
+import com.imagepick.matisse.MediaType
 
 
 class MainActivity : ComponentActivity() {
@@ -50,7 +51,7 @@ class MainActivity : ComponentActivity() {
                 MainPage(
                     onClick = {
                         mediaPickerLauncher.launch(
-                            mainViewModel.buildMatisse()
+                            mainViewModel.buildMatisse(mediaType = MediaType.ImageOnly)
                         )
                     }
                 )

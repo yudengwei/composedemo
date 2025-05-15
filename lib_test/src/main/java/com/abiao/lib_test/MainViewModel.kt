@@ -8,6 +8,8 @@ import com.imagepick.matisse.CoilImageEngine
 import com.imagepick.matisse.Matisse
 import com.imagepick.matisse.MediaResource
 import com.imagepick.matisse.MediaStoreCaptureStrategy
+import com.imagepick.matisse.MediaType
+import com.imagepick.matisse.internal.DefaultMediaFilter
 
 class MainViewModel: ViewModel() {
 
@@ -23,11 +25,13 @@ class MainViewModel: ViewModel() {
         }
     }
 
-    fun buildMatisse(): Matisse {
+    fun buildMatisse(mediaType: MediaType): Matisse {
         return Matisse(
             maxSelectable = 3,
             captureStrategy = MediaStoreCaptureStrategy(),
-            imageEngine = CoilImageEngine()
+            imageEngine = CoilImageEngine(),
+            mediaType = mediaType,
+            mediaFilter = DefaultMediaFilter()
         )
     }
 }
