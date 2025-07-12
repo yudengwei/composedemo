@@ -56,7 +56,10 @@ class MatisseActivity: BaseCaptureActivity() {
         setContent {
             MatisseTheme {
                 MatissePage(
-                    pageViewState = matisseViewModel.pageViewState
+                    pageViewState = matisseViewModel.pageViewState,
+                    onRequestTakePicture = {
+
+                    }
                 )
             }
         }

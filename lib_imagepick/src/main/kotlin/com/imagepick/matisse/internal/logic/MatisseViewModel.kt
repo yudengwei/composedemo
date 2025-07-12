@@ -5,6 +5,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.compose.foundation.lazy.grid.LazyGridState
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -18,6 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.max
 
 internal class MatisseViewModel(application: Application, private val matisse: Matisse) :
     AndroidViewModel(application) {
@@ -57,6 +59,25 @@ internal class MatisseViewModel(application: Application, private val matisse: M
         isSelected = false,
         isEnabled = true,
         positionIndex = -1
+    )
+
+    private val unselectedDisabledMediaSelectState = MatisseMediaSelectState(
+        isSelected = false,
+        isEnabled = false,
+        positionIndex = -1
+    )
+
+    var previewPageViewState by mutableStateOf(
+        value = MatissePreviewPageViewState(
+            visible = false,
+            initialPage = 0,
+            maxSelectable = maxSelectable,
+            sureButtonText = "",
+            sureButtonClickable = false,
+            previewResources = emptyList(),
+            onMediaCheckChanged = {},
+            onDismissRequest = {}
+        )
     )
 
     var pageViewState by mutableStateOf(
@@ -124,6 +145,14 @@ internal class MatisseViewModel(application: Application, private val matisse: M
             }
             hideLoadingDialog()
         }
+    }
+
+    private fun previewResource(
+        initialMedia: MatisseMediaExtend?,
+        totalResources: List<MatisseMediaExtend>,
+        selectedResources: List<MatisseMediaExtend>
+    ) {
+
     }
 
     private fun showToast(@StringRes id: Int) {
@@ -217,7 +246,58 @@ internal class MatisseViewModel(application: Application, private val matisse: M
     }
 
     private fun onMediaCheckChange(mediaResource: MatisseMediaExtend) {
+        val selectState = mediaResource.selectState as MutableState<MatisseMediaSelectState>
+        if (selectState.value.isSelected) {
+            selectState.value = unselectedEnableMediaSelectState
+        } else {
+            if (maxSelectable == 1) {
+                resetAllMediaSelectState(state = unselectedEnableMediaSelectState)
+            } else {
+                val selectedResources = filterSelectedMediaResource()
+                if (selectedResources.size >= maxSelectable) {
+                    return
+                }
+            }
+            selectState.value = MatisseMediaSelectState(
+                isSelected = true,
+                isEnabled = true,
+                positionIndex = filterSelectedMediaResource().size
+            )
+        }
+        rearrangeMediaPosition()
+    }
 
+    private fun rearrangeMediaPosition() {
+        val selectedMedia = filterSelectedMediaResource()
+        resetAllMediaSelectState(
+            state = if (selectedMedia.size >= maxSelectable) {
+                unselectedDisabledMediaSelectState
+            } else {
+                unselectedEnableMediaSelectState
+            }
+        )
+        selectedMedia.forEachIndexed { index, matisseMediaExtend ->
+            val selectState = matisseMediaExtend.selectState as MutableState<MatisseMediaSelectState>
+            selectState.value = MatisseMediaSelectState(
+                isSelected = true,
+                isEnabled = true,
+                positionIndex = index
+            )
+        }
+    }
+
+    private fun filterSelectedMediaResource(): List<MatisseMediaExtend> {
+        return allMediaResource.filter {
+            it.selectState.value.isSelected
+        }.sortedBy {
+            it.selectState.value.positionIndex
+        }
+    }
+
+    private fun resetAllMediaSelectState(state: MatisseMediaSelectState) {
+        allMediaResource.forEach {
+            (it.selectState as MutableState<MatisseMediaSelectState>).value = state
+        }
     }
 
     private fun getString(@StringRes id: Int): String {

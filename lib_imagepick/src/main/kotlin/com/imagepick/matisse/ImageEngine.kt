@@ -32,11 +32,11 @@ class CoilImageEngine: ImageEngine {
         val context = LocalContext.current
         val request = remember(key1 = mediaResource.uri) {
             val uri = mediaResource.uri
-            val memoryCachekey = uri.toString()
+            val memoryCacheKey = uri.toString()
             ImageRequest.Builder(context = context)
                 .data(uri)
-                .placeholderMemoryCacheKey(memoryCachekey)
-                .memoryCacheKey(memoryCachekey)
+                .placeholderMemoryCacheKey(memoryCacheKey)
+                .memoryCacheKey(memoryCacheKey)
                 .build()
         }
         AsyncImage(
@@ -53,11 +53,11 @@ class CoilImageEngine: ImageEngine {
         val context = LocalContext.current
         val request = remember(key1 = mediaResource.uri) {
             val uri = mediaResource.uri
-            val memoryCachekey = uri.toString()
+            val memoryCacheKey = uri.toString()
             ImageRequest.Builder(context = context)
                 .data(uri)
-                .placeholderMemoryCacheKey(memoryCachekey)
-                .memoryCacheKey(memoryCachekey)
+                .placeholderMemoryCacheKey(memoryCacheKey)
+                .memoryCacheKey(memoryCacheKey)
                 .build()
         }
         if (mediaResource.isVideo) {
@@ -78,7 +78,6 @@ class CoilImageEngine: ImageEngine {
                 contentDescription = null
             )
         }
-
     }
 
 }

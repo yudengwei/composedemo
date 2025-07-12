@@ -70,3 +70,15 @@ internal data class MatisseMediaSelectState(
     }
 
 }
+
+@Stable
+internal data class MatissePreviewPageViewState(
+    val visible: Boolean,
+    val initialPage: Int,
+    val maxSelectable: Int,
+    val sureButtonText: String,
+    val sureButtonClickable: Boolean,
+    val previewResources: List<MatisseMediaExtend>,
+    val onMediaCheckChanged: (MatisseMediaExtend) -> Unit,
+    val onDismissRequest: (Long) -> Unit
+)

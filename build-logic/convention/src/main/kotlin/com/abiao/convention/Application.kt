@@ -28,7 +28,8 @@ internal fun Project.configureAndroidApplication(commonExtension: BaseAppModuleE
                 outputs.all {
                     if (this is ApkVariantOutputImpl) {
                         this.outputFileName =
-                            "compose_${variant.name}_versionCode_${variant.versionCode}_versionName_${variant.versionName}_${getApkBuildTime()}.apk"
+                            //"compose_${variant.name}_versionCode_${variant.versionCode}_versionName_${variant.versionName}_${getApkBuildTime()}.apk"
+                            "compose_${variant.name}_versionCode_${variant.versionCode}_versionName_${variant.versionName}.apk"
                     }
                 }
             }
