@@ -8,16 +8,10 @@ import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-internal fun Project.configureCompose(commonExtension: CommonExtension<*, *, *, *, *, *>) {
+internal fun Project.configureCompose(commonExtension: CommonExtension) {
     val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
     commonExtension.apply {
-        buildFeatures {
-            compose = true
-        }
-        composeOptions {
-            kotlinCompilerExtensionVersion =
-                libs.findVersion("androidx-compose-compiler").get().toString()
-        }
+        buildFeatures.compose = true
 
         dependencies {
             val bom = libs.findLibrary("androidx-compose-bom").get()
@@ -32,16 +26,17 @@ internal fun Project.configureCompose(commonExtension: CommonExtension<*, *, *, 
         }
     }
     tasks.withType<KotlinCompile>().configureEach {
-        kotlinOptions {
-            freeCompilerArgs += setOf(
-                "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
-                "-opt-in=androidx.compose.foundation.layout.ExperimentalLayoutApi",
-                "-opt-in=androidx.compose.foundation.layout.ExperimentalLayoutApi",
-                "-opt-in=com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi",
-                "-opt-in=androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi",
-                "-opt-in=androidx.compose.animation.ExperimentalAnimationApi",
-                "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
-                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+        compilerOptions {
+            optIn.addAll(
+                listOf(
+                    "androidx.compose.foundation.ExperimentalFoundationApi",
+                    "androidx.compose.foundation.layout.ExperimentalLayoutApi",
+                    "com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi",
+                    "androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi",
+                    "androidx.compose.animation.ExperimentalAnimationApi",
+                    "androidx.compose.material.ExperimentalMaterialApi",
+                    "androidx.compose.material3.ExperimentalMaterial3Api",
+                )
             )
         }
     }

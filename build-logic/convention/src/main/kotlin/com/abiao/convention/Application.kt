@@ -1,19 +1,11 @@
 package com.abiao.convention
 
 import com.abiao.Constant
-import com.android.build.gradle.internal.api.ApkVariantOutputImpl
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import org.gradle.api.JavaVersion
+import com.android.build.api.dsl.ApplicationExtension
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.File
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
-import java.util.TimeZone
 
-internal fun Project.configureAndroidApplication(commonExtension: BaseAppModuleExtension) {
+internal fun Project.configureAndroidApplication(commonExtension: ApplicationExtension) {
     commonExtension.apply {
         compileSdk = Constant.COMPILER_VERSION
         defaultConfig {
@@ -23,16 +15,6 @@ internal fun Project.configureAndroidApplication(commonExtension: BaseAppModuleE
             versionCode = Constant.VERSION_CODE
             versionName = Constant.VERSION_NAME
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-            applicationVariants.all {
-                val variant = this
-                outputs.all {
-                    if (this is ApkVariantOutputImpl) {
-                        this.outputFileName =
-                            //"compose_${variant.name}_versionCode_${variant.versionCode}_versionName_${variant.versionName}_${getApkBuildTime()}.apk"
-                            "compose_${variant.name}_versionCode_${variant.versionCode}_versionName_${variant.versionName}.apk"
-                    }
-                }
-            }
         }
         buildFeatures {
             buildConfig = false
@@ -44,11 +26,7 @@ internal fun Project.configureAndroidApplication(commonExtension: BaseAppModuleE
             sourceCompatibility = Constant.JAVA_VERSION
             targetCompatibility = Constant.JAVA_VERSION
         }
-        tasks.withType<KotlinCompile>().configureEach {
-            kotlinOptions {
-                jvmTarget = Constant.JAVA_VERSION.toString()
-            }
-        }
+
         signingConfigs {
             create("release") {
                 storeFile =
@@ -95,11 +73,4 @@ internal fun Project.configureAndroidApplication(commonExtension: BaseAppModuleE
             }
         }
     }
-}
-
-fun getApkBuildTime(): String {
-    val simpleDateFormat = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.US)
-    simpleDateFormat.timeZone = TimeZone.getTimeZone("Asia/Shanghai")
-    val time = Calendar.getInstance().time
-    return simpleDateFormat.format(time)
 }
