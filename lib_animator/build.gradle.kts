@@ -12,6 +12,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.compose.material)
 
     testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.junit)
