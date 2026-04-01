@@ -7,7 +7,6 @@ plugins {
 android {
     namespace = "com.abiao.util"
 
-    resourcePrefix("util")
 }
 
 dependencies {

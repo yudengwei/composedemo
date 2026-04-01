@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.androidx.hilt)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.protobuf)
 }
 
 android {
@@ -12,24 +11,6 @@ android {
 
     buildFeatures {
         viewBinding = true
-    }
-}
-
-protobuf {
-    protoc {
-        artifact = libs.protobuf.protoc.get().toString()
-    }
-    generateProtoTasks {
-        all().forEach { task ->
-            task.builtins {
-                register("java") {
-                    option("lite")
-                }
-                register("kotlin") {
-                    option("lite")
-                }
-            }
-        }
     }
 }
 
