@@ -15,6 +15,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "composedemo"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 include(":lib_imagepick")
 include(":lib_util")
@@ -30,4 +32,9 @@ include(":lib_layout")
 include(":lib_modifier")
 include(":lib_widget")
 include(":lib_test")
+include(":lib_nowinandroid:datastore-proto")
+include(":lib_nowinandroid:datastore-test")
+include(":lib_nowinandroid:model")
+include(":lib_nowinandroid:data")
+include(":lib_nowinandroid:network")
 

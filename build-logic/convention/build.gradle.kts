@@ -39,6 +39,15 @@ gradlePlugin {
             id = "abiao.android.library"
             implementationClass = "LibraryConventionPlugin"
         }
+        register("Niahilt") {
+            id = "abiao.hilt"
+            implementationClass = "HiltConventionPlugin"
+        }
+        register("jvmLibrary") {
+            id = "abiao.jvm"
+            implementationClass = "JvmLibraryConventionPlugin"
+        }
+
     }
 }
 

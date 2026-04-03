@@ -1,7 +1,7 @@
-package com.abiao.util.di
+package com.abiao.common.di
 
-import com.abiao.util.net.ConnectivityManagerNetworkMonitor
-import com.abiao.util.net.NetworkMonitor
+import com.abiao.common.net.ConnectivityManagerNetworkMonitor
+import com.abiao.common.net.NetworkMonitor
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

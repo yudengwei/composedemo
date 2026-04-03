@@ -4,8 +4,7 @@ plugins {
     //alias(libs.plugins.abiao.android.library)
     alias(libs.plugins.abiao.android.application)
     alias(libs.plugins.abiao.android.compose)
-    alias(libs.plugins.google.ksp)
-    alias(libs.plugins.androidx.hilt)
+    alias(libs.plugins.abiao.hilt)
     alias(libs.plugins.kotlin.compose)
 }
 
@@ -19,9 +18,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewModelCompose)
 
     implementation(libs.androidx.hilt.navigation.compose)
-
-    implementation(libs.androidx.hilt)
-    ksp(libs.androidx.hilt.compiler)
 
     implementation(libs.coil.compose)
 

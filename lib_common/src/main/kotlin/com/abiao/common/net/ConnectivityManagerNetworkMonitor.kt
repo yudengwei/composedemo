@@ -1,4 +1,4 @@
-package com.abiao.util.net
+package com.abiao.common.net
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -9,8 +9,8 @@ import android.net.NetworkRequest
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
 import androidx.core.content.getSystemService
-import com.abiao.util.di.ABiaoDispatcher
-import com.abiao.util.di.Dispatcher
+import com.abiao.common.di.coroutine.Dispatch
+import com.abiao.common.di.coroutine.NiaDispatchers
 import com.abiao.util.log.Logger
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher
@@ -24,7 +24,7 @@ import javax.inject.Inject
 
 class ConnectivityManagerNetworkMonitor @Inject constructor(
     @ApplicationContext context: Context,
-    @Dispatcher(ABiaoDispatcher.IO) ioDispatcher: CoroutineDispatcher
+    @Dispatch(NiaDispatchers.IO) ioDispatcher: CoroutineDispatcher
 ): NetworkMonitor {
 
     override val isOnline: Flow<Boolean> = callbackFlow {

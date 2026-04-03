@@ -2,8 +2,7 @@
 
 plugins {
     alias(libs.plugins.abiao.android.application)
-    alias(libs.plugins.androidx.hilt)
-    alias(libs.plugins.google.ksp)
+    alias(libs.plugins.abiao.hilt)
 }
 
 android {
@@ -11,9 +10,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.hilt)
-    ksp(libs.androidx.hilt.compiler)
-    implementation(project(":lib_animator"))
+    implementation(projects.libNowinandroid)
 
     testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "com.abiao.lib_nowinandroid.datastore";
+option java_multiple_files = true;
+
+message UserPreferences {
+    int32 topicChangeListVersion = 1;
+    bool should_hide_onboarding = 2;
+}

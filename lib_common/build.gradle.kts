@@ -3,7 +3,7 @@
 plugins {
     alias(libs.plugins.abiao.android.library)
     alias(libs.plugins.abiao.android.compose)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.abiao.hilt)
 }
 
 android {
@@ -13,12 +13,11 @@ android {
 dependencies {
     implementation(libs.androidx.appcompat)
 
-
     testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso)
 
     implementation(libs.androidx.startup.runtime)
 
-    implementation(project(":lib_util"))
+    implementation(projects.libUtil)
 }

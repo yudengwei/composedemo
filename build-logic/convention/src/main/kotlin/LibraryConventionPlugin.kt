@@ -1,8 +1,10 @@
 import com.abiao.convention.configureAndroidLibrary
+import com.abiao.libs
 import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 
 class LibraryConventionPlugin : Plugin<Project> {
 
@@ -14,6 +16,14 @@ class LibraryConventionPlugin : Plugin<Project> {
             }
             extensions.configure<LibraryExtension> {
                 configureAndroidLibrary(commExtension = this)
+            }
+
+            dependencies {
+                "androidTestImplementation"(libs.findLibrary("kotlin.test").get())
+                "testImplementation"(libs.findLibrary("kotlin.test").get())
+                "testImplementation"(libs.findLibrary("junit.junit").get())
+
+                "implementation"(libs.findLibrary("androidx.tracing.ktx").get())
             }
         }
     }
