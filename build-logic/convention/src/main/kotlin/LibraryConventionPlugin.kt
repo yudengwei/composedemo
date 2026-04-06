@@ -16,6 +16,9 @@ class LibraryConventionPlugin : Plugin<Project> {
             }
             extensions.configure<LibraryExtension> {
                 configureAndroidLibrary(commExtension = this)
+                testOptions.targetSdk = 36
+                defaultConfig.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                testOptions.animationsDisabled = true
             }
 
             dependencies {

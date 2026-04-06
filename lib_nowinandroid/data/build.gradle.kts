@@ -13,6 +13,10 @@ dependencies {
     implementation(projects.libCommon)
     implementation(projects.libNowinandroid.datastoreProto)
     implementation(projects.libNowinandroid.model)
+    implementation(projects.libNowinandroid.database)
+    implementation(projects.libNowinandroid.network)
 
     implementation(libs.androidx.datastore)
+
+    implementation(libs.kotlinx.datetime)
 }

@@ -1,7 +1,10 @@
 package com.abiao.network.di
 
 import android.content.Context
+import com.abiao.network.NiaNetworkDataSource
 import com.abiao.network.demo.DemoAssetManager
+import com.abiao.network.demo.DemoNiaNetworkDataSource
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

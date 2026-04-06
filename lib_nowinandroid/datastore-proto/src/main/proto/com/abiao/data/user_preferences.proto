@@ -1,9 +1,15 @@
 syntax = "proto3";
 
+import "com/abiao/data/dark_theme_config.proto";
+import "com/abiao/data/theme_brand.proto";
+
 option java_package = "com.abiao.lib_nowinandroid.datastore";
 option java_multiple_files = true;
 
 message UserPreferences {
     int32 topicChangeListVersion = 1;
     bool should_hide_onboarding = 2;
+    bool use_dynamic_color = 3;
+    ThemeBrandProto theme_brand = 4;
+    DarkThemeConfigProto dark_theme_config = 5;
 }

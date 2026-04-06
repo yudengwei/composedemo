@@ -5,7 +5,7 @@ import com.abiao.network.model.NetworkTopic
 
 interface NiaNetworkDataSource {
 
-    suspend fun getNetworkTopic(): List<NetworkTopic>
+    suspend fun getNetworkTopic(ids: List<String>? = null): List<NetworkTopic>
 
-    suspend fun getNetworkChangeList(): List<NetworkChangeList>
+    suspend fun getNetworkChangeList(after: Int? = null): List<NetworkChangeList>
 }

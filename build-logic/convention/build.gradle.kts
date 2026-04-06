@@ -23,6 +23,7 @@ dependencies {
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.room.gradlePlugin)
 }
 
 gradlePlugin {
@@ -47,7 +48,10 @@ gradlePlugin {
             id = "abiao.jvm"
             implementationClass = "JvmLibraryConventionPlugin"
         }
-
+        register("room") {
+            id = "abiao.room"
+            implementationClass = "AndroidRoomConventionPlugin"
+        }
     }
 }
 

@@ -38,6 +38,18 @@ protobuf = "4.34.1"
 kotlinxCoroutines = "1.10.2"
 androidxTracing = "1.3.0"
 kotlinxSerializationJson = "1.10.0"
+room = "2.8.4"
+androidxTestCore = "1.7.0"
+androidxTestExt = "1.3.0"
+androidxTestRules = "1.7.0"
+androidxTestRunner = "1.7.0"
+hiltExt = "1.3.0"
+androidxWork = "2.11.2"
+androidxNavigation3 = "1.0.1"
+androidxLifecycleViewModelNavigation3 = "2.10.0"
+kotlinxDatetime = "0.7.1"
+androidxHiltLifecycleViewModelCompose = "1.3.0"
+androidxComposeMaterial3AdaptiveNavigation3 = "1.3.0-alpha04"
 
 [plugins]
 android-application = {id = "com.android.application", version.ref = "androidGradlePlugin"}
@@ -46,12 +58,14 @@ kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref =
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-plugin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
+room = { id = "androidx.room", version.ref = "room" }
 
 abiao-android-application = {id = "abiao.android.application"}
 abiao-android-compose = {id = "abiao.android.compose"}
 abiao-android-library = {id = "abiao.android.library"}
 abiao-hilt = {id = "abiao.hilt"}
 abiao-jvm = {id = "abiao.jvm"}
+abiao-room = {id = "abiao.room"}
 
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin-plugin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
@@ -78,15 +92,34 @@ androidx-datastore = {group = "androidx.datastore", name = "datastore", version.
 androidx-datastore-android = {group = "androidx.datastore", name = "datastore-android", version.ref = "androidx-datastore"}
 androidx-datastore-preferences = {group = "androidx.datastore", name = "datastore-preferences", version.ref = "androidx-datastore"}
 androidx-startup-runtime = {group = "androidx.startup", name = "startup-runtime", version.ref = "androidx-startup"}
+room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-navigation3-runtime = { group = "androidx.navigation3", name = "navigation3-runtime", version.ref = "androidxNavigation3" }
+androidx-navigation3-ui = { group = "androidx.navigation3", name = "navigation3-ui", version.ref = "androidxNavigation3" }
+androidx-lifecycle-viewModel-navigation3 = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-navigation3", version.ref = "androidxLifecycleViewModelNavigation3" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
+androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-hilt-lifecycle-viewModelCompose = { group = "androidx.hilt", name = "hilt-lifecycle-viewmodel-compose", version.ref = "androidxHiltLifecycleViewModelCompose" }
 
 hilt-android = {group = "com.google.dagger", name = "hilt-android", version.ref = "hilt"}
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
+hilt-ext-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltExt" }
+hilt-ext-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hiltExt" }
+androidx-work-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "androidxWork" }
+androidx-work-testing = { group = "androidx.work", name = "work-testing", version.ref = "androidxWork" }
 
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
 androidx-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso" }
 junit-junit = { module = "junit:junit", version.ref = "junit-junit" }
+androidx-test-core = { group = "androidx.test", name = "core", version.ref = "androidxTestCore" }
+androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidxTestRules" }
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
+
 
 androidx-compose-bom = {group = "androidx.compose", name="compose-bom", version.ref = "androidx-compose-bom"}
 androidx-compose-ui = {group = "androidx.compose.ui", name="ui"}
@@ -101,6 +134,7 @@ androidx-compose-adaptive-core = { group = "androidx.compose.material3.adaptive"
 androidx-compose-adaptive-layout = { group = "androidx.compose.material3.adaptive", name = "adaptive-layout", version.ref = "androidx-compose-adaptive"}
 androidx-compose-adaptive-navigation = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation", version.ref = "androidx-compose-adaptive"}
 androidx-compose-material3-adapter-suite = {group = "androidx.compose.material3", name = "material3-adaptive-navigation-suite"}
+androidx-compose-adaptive-navigation3 = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation3",version.ref="androidxComposeMaterial3AdaptiveNavigation3" }
 
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 coil-gif = { module = "io.coil-kt:coil-gif", version.ref = "coil" }

@@ -37,4 +37,6 @@ include(":lib_nowinandroid:datastore-test")
 include(":lib_nowinandroid:model")
 include(":lib_nowinandroid:data")
 include(":lib_nowinandroid:network")
+include(":lib_nowinandroid:database")
+include(":lib_nowinandroid:sync:work")
 

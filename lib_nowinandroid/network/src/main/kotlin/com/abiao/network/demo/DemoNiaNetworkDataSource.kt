@@ -22,9 +22,9 @@ class DemoNiaNetworkDataSource @Inject constructor(
     private val networkJson: Json,
     private val demoAssetManager: DemoAssetManager = JvmUnitTestDemoAssetManager
 ): NiaNetworkDataSource {
-    override suspend fun getNetworkTopic(): List<NetworkTopic> = getDataFromJsonFile(TOPICS_ASSET)
+    override suspend fun getNetworkTopic(ids: List<String>?): List<NetworkTopic> = getDataFromJsonFile(TOPICS_ASSET)
 
-    override suspend fun getNetworkChangeList(): List<NetworkChangeList> = getNetworkTopic().mapToChangeList(NetworkTopic::id)
+    override suspend fun getNetworkChangeList(after: Int?): List<NetworkChangeList> = getNetworkTopic().mapToChangeList(NetworkTopic::id)
 
     @OptIn(ExperimentalSerializationApi::class)
     private suspend inline fun <reified T> getDataFromJsonFile(fileName: String): List<T> =
