@@ -10,7 +10,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.libNowinandroid)
+    implementation(projects.libChatdemo)
 
     testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.junit)

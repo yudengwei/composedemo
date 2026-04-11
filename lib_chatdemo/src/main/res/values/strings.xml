@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="index_welcome">Connect easily with your family and friends over countries</string>
+    <string name="index_hint">Terms&amp;Privacy Policy</string>
+    <string name="start_message">Start Messaging</string>
+    <string name="continue_next">continue</string>
+    <string name="login_page_title">Your Profile</string>
+    <string name="first_name">First Name (Required)</string>
+    <string name="last_name">Last Name (Optional)</string>
+    <string name="save">Save</string>
+    <string name="contact">contact</string>
+    <string name="chat">chats</string>
+    <string name="more">more</string>
+</resources>
