@@ -15,12 +15,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberDecoratedNavEntries
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
+import com.abiao.lib_chatdemo.model.Contact
+import com.abiao.lib_chatdemo.model.TopEntry
 import com.abiao.lib_chatdemo.page.EnterCodePage
 import com.abiao.lib_chatdemo.page.EnterCodePageKey
 import com.abiao.lib_chatdemo.page.IndexPage
@@ -79,7 +82,17 @@ class MainActivity: ComponentActivity() {
 //                            }
 //                        }
                         entry<MainPageKey> {
-                            MianPage()
+                            MianPage(
+                                listOf(
+                                    TopEntry(
+                                        title = stringResource(R.string.contact),
+                                        icons = listOf(
+                                            R.drawable.ic_more
+                                        )
+                                    )
+                                ),
+                                contacts = mockContacts()
+                            )
                         }
                     }
 
@@ -118,4 +131,24 @@ class MainActivity: ComponentActivity() {
             }
         }
     }
+}
+
+private fun mockContacts(): List<Contact> {
+    return listOf(
+        Contact(id = 1,
+            name = "",
+            isOnline = false,
+            lastTime = -1,
+            drawableId = R.drawable.a1),
+        Contact(id = 3,
+            name = "",
+            isOnline = false,
+            lastTime = -1,
+            drawableId = R.drawable.a2),
+        Contact(id = 2,
+            name = "",
+            isOnline = false,
+            lastTime = -1,
+            drawableId = R.drawable.a3)
+    )
 }
