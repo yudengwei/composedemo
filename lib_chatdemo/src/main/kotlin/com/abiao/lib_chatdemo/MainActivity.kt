@@ -136,19 +136,24 @@ class MainActivity: ComponentActivity() {
 private fun mockContacts(): List<Contact> {
     return listOf(
         Contact(id = 1,
-            name = "",
-            isOnline = false,
+            name = "阿标1",
+            isOnline = true,
             lastTime = -1,
-            drawableId = R.drawable.a1),
-        Contact(id = 3,
-            name = "",
-            isOnline = false,
-            lastTime = -1,
-            drawableId = R.drawable.a2),
+            drawableId = R.drawable.c1),
         Contact(id = 2,
-            name = "",
-            isOnline = false,
+            name = "阿标2",
+            isOnline = true,
             lastTime = -1,
-            drawableId = R.drawable.a3)
+            drawableId = R.drawable.c2),
+        Contact(id = 3,
+            name = "阿标3",
+            isOnline = true,
+            lastTime = -1,
+            drawableId = R.drawable.c3),
+        Contact(id = 4,
+            name = "阿标4",
+            isOnline = true,
+            lastTime = -1,
+            drawableId = R.drawable.c4)
     )
 }

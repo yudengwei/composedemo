@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="enter_code_bg_color">#FF152033</color>
+    <color name="color_line">#FF152033</color>
 </resources>

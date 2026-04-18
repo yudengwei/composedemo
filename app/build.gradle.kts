@@ -10,7 +10,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.libChatdemo)
+    implementation(projects.libLayout)
 
     testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.junit)
