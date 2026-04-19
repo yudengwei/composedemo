@@ -34,6 +34,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,6 +47,7 @@ import androidx.compose.ui.unit.sp
 import com.abiao.demo.R
 import com.abiao.demo.SoftShadowImage
 import com.abiao.demo.shadowByDrawSoft
+import kotlinx.coroutines.launch
 
 private val IMAGE_LIST = listOf(
     R.drawable.ic_robot1,
@@ -115,15 +117,23 @@ fun BannerPage(
                 modifier = Modifier.padding(horizontal = 40.dp)
             )
 
+            val scope = rememberCoroutineScope()
             ArrowSwitcher(
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(top = 20.dp),
-                canGoNext = false, canGoPrevious =  true, onPreviousClick = {
-
-            }, onNextClick = {
-
-            })
+                canGoNext = pagerState.canScrollForward,
+                canGoPrevious =  pagerState.canScrollBackward,
+                onPreviousClick = {
+                    scope.launch {
+                        pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                    }
+                },
+                onNextClick = {
+                    scope.launch {
+                        pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                    }
+                })
         }
     }
 }
