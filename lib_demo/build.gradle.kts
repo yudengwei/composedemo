@@ -23,6 +23,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso)
 
+    implementation(libs.androidx.compose.material.iconsExtended)
+
     implementation(project(":lib_util"))
     implementation(project(":lib_common"))
 
